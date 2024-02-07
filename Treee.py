@@ -150,19 +150,31 @@ def BuildTreee(preorder, inorder):
 
     return root
 
+def inorder_traversal(root, lst_res: []):
+    if root:
+        inorder_traversal(root.left, lst_res)
+        lst_res.append(root.value)
+        inorder_traversal(root.right, lst_res)
 
-def inorder_traversal(node):
+
+def preorder_traversal(root, lst_res: []):
+    if root:
+        lst_res.append(root.value)
+        preorder_traversal(root.left, lst_res)
+        preorder_traversal(root.right, lst_res)
+
+def inorder_traversal_print(node):
     if node:
-        inorder_traversal(node.left)
+        inorder_traversal_print(node.left)
         print(node.value, end=" ")
-        inorder_traversal(node.right)
+        inorder_traversal_print(node.right)
 
 
-def preorder_traversal(node):
+def preorder_traversal_print(node):
     if node:
         print(node.value, end=" ")
-        preorder_traversal(node.left)
-        preorder_traversal(node.right)
+        inorder_traversal_print(node.left)
+        inorder_traversal_print(node.right)
 
 
 # Example usage:
@@ -172,10 +184,10 @@ inorder = [9, 3, 15, 20, 7]
 root = BuildTreee(preorder, inorder)
 
 print("Inorder Traversal:")
-inorder_traversal(root)
+inorder_traversal_print(root)
 
 print("\nPreorder Traversal:")
-preorder_traversal(root)
+preorder_traversal_print(root)
 
 tree = Tree()
 tree.root = root
