@@ -163,31 +163,25 @@ def preorder_traversal(root, lst_res: []):
         preorder_traversal(root.left, lst_res)
         preorder_traversal(root.right, lst_res)
 
-def inorder_traversal_print(node):
-    if node:
-        inorder_traversal_print(node.left)
-        print(node.value, end=" ")
-        inorder_traversal_print(node.right)
+root = Node(3)
+root.left = Node(9)
+root.right = Node(20)
+root.right.left = Node(15)
+root.right.right = Node(7)
+root.left.left = Node(8)
+root.left.right = Node(4)
 
+lst_inorder = []
+lst_preorder = []
+inorder_traversal(root, lst_inorder)
+tree = Tree()
+tree.root = root
+print('lst_inorder: ', lst_inorder, '\n')
 
-def preorder_traversal_print(node):
-    if node:
-        print(node.value, end=" ")
-        inorder_traversal_print(node.left)
-        inorder_traversal_print(node.right)
+preorder_traversal(root, lst_preorder)
+print("lst_preorder: ", lst_preorder, '\n')
 
-
-# Example usage:
-preorder = [3, 9, 20, 15, 7]
-inorder = [9, 3, 15, 20, 7]
-
-root = BuildTreee(preorder, inorder)
-
-print("Inorder Traversal:")
-inorder_traversal_print(root)
-
-print("\nPreorder Traversal:")
-preorder_traversal_print(root)
+root = BuildTreee(lst_preorder, lst_inorder)
 
 tree = Tree()
 tree.root = root
